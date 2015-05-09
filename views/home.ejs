@@ -1,0 +1,14 @@
+<% include ./partials/top.ejs %>
+<div class="home-page container-fluid">
+  <div ng-controller="Frontpage" class="text-center">
+    <h1 class="welcomeHeading text-danger">Welcome to Throwa!</h1>
+    <p class="welcomeText"><b>Throwa</b> is a platform for easily sharing your files to someone. You can make up a URI like <b>&#47;myAwesomeFolder</b> and throw in some files and share the link to the same folder with anyone you like.
+      </p>
+      <h4>Get started using the button below!</h4>
+    <button type="button" spinnerLoader ng-click="newFolder()" class="getStartedBtn btn btn-success btn-lg">
+      Gimme a new folder!
+    </button>
+
+  </div>
+</div>
+<% include ./partials/bottom.ejs %>

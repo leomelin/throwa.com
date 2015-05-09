@@ -1,0 +1,67 @@
+<% include ./partials/top.ejs %>
+<div class="api-page container-fluid">
+  <div class="text-center">
+    <h1 class="welcomeHeading text-danger">API Documentation</h1>
+    <p><b>Throwa</b> is equipped with a simple <b>REST</b>-API that allows you to use Throwa in your own projects or clients. API is located at <code><%=apiURI%></code>
+      </p>
+      <div class="text-left">
+      <div class="block">
+      <h4><span class="text-warning">GET</span> /folder</h4>
+      <p>Get a name of an empty Throwa-folder. This is optional, but it's the only way to ensure that the folder is currently not in use. This request doesn't physically create anything on the Throwa -server - It just randomizes folder names until it finds one that is not in use. The string is randomized from two english words that are concatenated together e.g. "fooBar"</p>
+      <pre><code><span class="text-warning">/**
+ * RESPONSE STATUS: 200 (OK)
+ */</span>
+
+{
+  folder: &lt;STRING&gt; <span class="text-success">/* Name of an <i>empty</i> Throwa-folder. */</span>
+}</code></pre>
+      </div>
+      <div class="block">
+      <h4><span class="text-warning">GET</span> /files/:folder</h4>
+      <p>Get all the files in a requested Throwa-folder.</p>
+      <pre><code><span class="text-warning">/**
+ * RESPONSE STATUS: 200 (OK)
+ */</span>
+
+[
+  {
+    "_id" : &lt;STRING&gt;,       <span class="text-success">/* File id */</span>
+    "filename" : &lt;STRING&gt;,  <span class="text-success">/* Name of the file inside the folder */</span>
+    "folder" : &lt;STRING&gt;     <span class="text-success">/* Throwa-folder where the file is located */</span>
+  },
+  ...
+]</code></pre>
+      </div>
+      <div class="block">
+      <h4><span class="text-warning">POST</span> /files/:folder</h4>
+      <p>Upload file to requested Throwa-folder. Request must be sent with <code>multipart/form-data</code></p>
+
+      <pre>
+<code>/**
+ * Input data-format:
+ *  Content-Disposition: form-data; name="file"; filename="&lt;STRING&gt;"
+ *  Content-Type: &lt;mime-type&gt;
+ */
+
+<span class="text-warning">/**
+ * RESPONSE STATUS: 201 (Created)
+ */</span>
+
+{
+  "_id" : &lt;STRING&gt;,       <span class="text-success">/* File id */</span>
+  "filename" : &lt;STRING&gt;,  <span class="text-success">/* Name of the file inside the folder */</span>
+  "folder" : &lt;STRING&gt;     <span class="text-success">/* Throwa-folder where the file is located */</span>
+}</code></pre>
+
+      </div>
+      <div class="block">
+      <h4><span class="text-warning">DELETE</span> /files/:folder/:id</h4>
+      <p>Delete file with requested _id inside a requested Throwa-folder.</p>
+      <pre><code><span class="text-warning">/**
+ * STATUS: 204 (Empty response)
+ */</span></code></pre>
+      </div>
+      </div>
+  </div>
+</div>
+<% include ./partials/bottom.ejs %>

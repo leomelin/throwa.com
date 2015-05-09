@@ -1,0 +1,5 @@
+build/
+public/stylesheets/*.css
+node_modules
+.DS_Store
+public/javascripts/lib/**

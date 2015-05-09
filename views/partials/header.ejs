@@ -1,0 +1,23 @@
+<header>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation" ng-controller="NavBarCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" ng-click="isCollapsed = !isCollapsed">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Throwa.com</a>
+            </div>
+
+            <div class="collapse navbar-collapse" collapse="isCollapsed">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="<%=templateName === 'home' ? 'active' : ''%>"><a href="/">Home</a></li>
+                <li class="<%=templateName === 'terms' ? 'active' : ''%>"><a href="/terms">Terms and conditions</a></li>
+                <li class="<%=templateName === 'api' ? 'active' : ''%>"><a href="/api">API</a></li>
+                <li class="<%=templateName === 'contact' ? 'active' : ''%>"><a href="/contact">Contact</a></li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+</header>

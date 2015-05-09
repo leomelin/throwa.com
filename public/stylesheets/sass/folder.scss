@@ -1,0 +1,157 @@
+.folder-page {
+  /* Folder -page */
+  h1.folderNameHeader {
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    line-height: 43px;
+  }
+
+  .drop-box {
+    border: dashed 2px #ccc;
+    padding:20px;
+    margin-top:40px;
+  }
+
+  .drop-box.dragover {
+    border: dashed 2px #000;
+  }
+
+  .uploadBtnWrapper {
+    margin-top: 20px;
+  }
+
+  .fileListWrapper {
+    margin-top: 20px;
+
+    /* File upload progress bar */
+    .progressWrapper {
+      position: relative;
+      text-align: center;
+    }
+
+    .progress {
+      margin-bottom: 0;
+    }
+
+    /* Remove button */
+    .removeBtnIcon {
+      font-size: 17px;
+      top: 3px;
+      left: -2px;
+      display:none;
+    }
+
+    .removeText {
+      display:inline;
+    }
+
+    .spinner.fileCrunching {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,.5);
+
+      .icon-spin {
+        top: 3px;
+      }
+
+      .fileCrunchingText {
+        padding-left:5px;
+      }
+    }
+
+    /* Hide the "crunching..." -text when screen is small */
+    @media screen and (max-width:750px) {
+      .spinner .fileCrunchingText {
+        display:none;
+      }
+    }
+  }
+
+  .fileListWrapper td.bytesCol {
+    min-width: 52px;
+    word-break: break-word;
+  }
+}
+
+@media screen and (max-width:500px) {
+  .folder-page {
+    h1.folderNameHeader {
+      font-size:26px;
+    }
+  }
+
+  .fileListWrapper {
+    .removeBtnIcon {
+      display:inline;
+    }
+
+    .removeText {
+      display:none;
+    }
+  }
+}
+
+/* <BEGIN> Spinner */
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+
+  -webkit-transition: opacity 0.25s, width 0.25s;
+  -moz-transition: opacity 0.25s, width 0.25s;
+  -o-transition: opacity 0.25s, width 0.25s;
+  transition: opacity 0.25s, width 0.25s;
+}
+
+.has-spinner.active {
+  cursor:progress;
+}
+
+.has-spinner.active .spinner {
+  opacity: 1;
+  width: auto; /* This doesn't work, just fix for unkown width elements */
+}
+
+.has-spinner.active .spinner .icon-spin {
+  -webkit-transform-origin: 50% 50%;
+  transform-origin:50% 50%;
+  -ms-transform-origin:50% 50%; /* IE 9 */
+  -webkit-animation: spin .8s infinite linear;
+  -moz-animation: spin .8s infinite linear;
+  -o-animation: spin .8s infinite linear;
+  animation: spin .8s infinite linear;
+}
+
+.has-spinner.btn-mini.active .spinner {
+  width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+  width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+  width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+  width: 19px;
+}
+
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+/* <END> Spinner */

@@ -1,0 +1,61 @@
+<% include ./partials/top.ejs %>
+<div class="folder-page container-fluid">
+  <h1 class="folderNameHeader text-danger text-center">&#47;<%=folder%></h1>
+
+  <div ng-controller="FileList" ng-init="folder='<%=folder%>'">
+    <div ng-file-drop ng-model="uploadQueue" class="drop-box"
+    drag-over-class="dragover" ng-multiple="true" allow-dir="true"
+    accept="*">
+    <div class="uploadBtnWrapper text-center">
+      <button class="btn btn-success btn-lg" ng-multiple="true" allow-dir="true"
+    accept="*" ng-file-select ng-model="uploadQueue">Upload files</button>
+    </div>
+
+    <div ng-if="files.length === 0">
+      <h3 class="text-center">Upload files by dragging them here or by using the upload button above.</h3>
+    </div>
+    <div ng-if="files.length !== 0" class="fileListWrapper">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Filename</th>
+            <th>Size</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="fileRow" ng-animate="'animate'" ng-repeat="(index, file) in files">
+            <th scope="row">{{index+1}}</th>
+            <td><a href="<%=apiURI%>/files/<%=folder%>/{{file._id}}" target="_blank" download><span>{{file.filename}}</span></a></td>
+            <td class="bytesCol"><span>{{bytesToSize(file.size)}}</span></td>
+            <td class="text-right">
+              <div ng-if="file.progress !== undefined" class="progressWrapper active" ng-class="{'has-spinner': file.progress === 100}">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{file.progress}}" aria-valuemin="0" aria-valuemax="100" style="width: {{file.progress}}%; min-width: 2em">
+                      {{file.progress}}%
+                  </div>
+                </div>
+                <span class="fileCrunching spinner">
+                    <i class="icon-spin glyphicon glyphicon-refresh"></i>
+                    <span class="fileCrunchingText">crunching...</span>
+                </span>
+              </div>
+              <div ng-if="file.progress === undefined">
+                <button type="button" spinnerLoader ng-disabled="isDeleting" ng-click="isDeleting = true; remove(file._id)" class="btn btn-danger has-spinner" ng-class="{'active': isDeleting}">
+                  <span class="spinner"><i class="icon-spin glyphicon glyphicon-refresh"></i></span>
+                  <span class="removeBtnIcon glyphicon glyphicon-remove"></span>
+                  <span class="removeText">remove</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div ng-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+</div>
+</div>
+<% include ./partials/bottom.ejs %>

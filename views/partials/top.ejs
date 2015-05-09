@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:ng="http://angularjs.org" ng-app="throwaApp">
+<head>
+    <meta charset="utf-8">
+    <title>Throwa.com</title>
+    <meta name="description" content="Throwa.com - easy filesharing platform">
+    <meta name="author" content="Leo Melin">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- styles -->
+    <% css.forEach(function (href) { %><link href="/<%=href%>" rel="stylesheet"><% }) %>
+
+    <script type="application/javascript">
+      window.apiURI='<%=apiURI%>'
+    </script>
+
+    <% scripts.forEach(function (src) { %><script type="application/javascript" src="/<%=src%>"></script><% }) %>
+
+</head>
+<body>
+<% include ./header.ejs %>
