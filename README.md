@@ -12,14 +12,13 @@ Installation
 $ mongorestore --db <YOUR DB NAME> --collection folderwords mongodb-migrations/folderwords.bson
 ````
 3. Update config.js to match your local settings
-
+4. Start development server
 ```sh
 $ bower install
 $ npm install
-$ cd public/javascripts/lib/angular-ui-bootstrap
-$ wget https://raw.githubusercontent.com/angular-ui/bootstrap/gh-pages/ui-bootstrap-tpls-0.12.1.min.js
-
 $ gulp
 ```
+
+To create a production build run ```gulp release``` and the build will be generated into ```/build/release``` folder.
 
 Licence MIT

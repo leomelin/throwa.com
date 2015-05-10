@@ -2,7 +2,7 @@
   "javascripts/lib/lodash/lodash.min.js",
   "javascripts/lib/angular/angular.min.js",
   "javascripts/lib/ng-file-upload/angular-file-upload-all.min.js",
-  "javascripts/lib/angular-ui-bootstrap/ui-bootstrap-tpls-0.12.1.min.js",
+  "javascripts/lib/angular-bootstrap/ui-bootstrap-tpls.min.js",
   "javascripts/init.js",
   "javascripts/frontPage.js",
   "javascripts/navBar.js",
