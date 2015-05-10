@@ -7,10 +7,10 @@ An open source filesharing platform with easy RESTful usage & public API.
 Installation
 ------------
 1. Clone the repo
-2. Install and start mongodb server - Migrate foldername data to your mongoDB database
+2. Install and start mongodb server - Migrate foldername data to your mongoDB database  
   ```sh
 $ mongorestore --db <YOUR DB NAME> --collection folderwords mongodb-migrations/folderwords.bson
-```
+  ```
 3. Update config.js to match your local settings
 4. Start development server
 
