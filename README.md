@@ -8,11 +8,12 @@ Installation
 ------------
 1. Clone the repo
 2. Install and start mongodb server - Migrate foldername data to your mongoDB database
-```sh
+  ```sh
 $ mongorestore --db <YOUR DB NAME> --collection folderwords mongodb-migrations/folderwords.bson
-````
+```
 3. Update config.js to match your local settings
 4. Start development server
+
 ```sh
 $ bower install
 $ npm install
