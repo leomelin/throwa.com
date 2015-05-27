@@ -2,19 +2,8 @@
 * Filelist Controller
 * handles throwa -folder actions
 */
-window.throwaApp.controller('FileList', function ($scope, $http, $timeout, $upload) {
-  /** <BEGIN> Scope helper methods */
-
-  // Format bytes to size -string
-  $scope.bytesToSize = function (bytes) {
-    if (typeof bytes === 'undefined') return 'unknown'
-    if (bytes === 0) return '0 Byte'
-    var k = 1000
-    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-    var i = Math.floor(Math.log(bytes) / Math.log(k))
-    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i]
-  }
-  /** <END> Scope helper methods */
+window.throwaApp.controller('FileList', function ($scope, $http, $timeout, $upload, helpers) {
+  $scope.bytesToSize = helpers.bytesToSize
 
   $timeout(function () {
     // As soon as the template has loaded, send api request to check folder contents in the current Throwa -folder
